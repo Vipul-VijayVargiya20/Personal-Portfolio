@@ -1,5 +1,5 @@
 **Project Concept:**
-
+**project #6:**
 This is a fun, text-based program that simulates sharpening a pencil eraser. You enter the eraser's condition, and the program "sharpens" it and provides a new condition.
 
 **GitHub Repository Setup:**
