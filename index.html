@@ -1,5 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencil Eraser Sharpener</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Press Start 2P', sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        background-color: #fff;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 80%;
+        width: 450px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #4CAF50;
+      }
+
+      p {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+      }
+
+      input[type="text"] {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        width: calc(100% - 2rem);
+        max-width: 300px;
+        display: inline-block;
+        font-size: 0.8rem;
+      }
+
+      button {
+        padding: 0.75rem 1.5rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background-color 0.3s ease;
+        margin-top: 0.5rem;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #result {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        color: #333;
+      }
+
+      @media screen and (max-width: 600px) {
+        .container {
+          padding: 16px;
+        }
+        input[type="text"] {
+            width: calc(100% - 1.5rem);
+        }
+      }
+    </style>
+</head>
+<body class="bg-gray-100 p-6 flex justify-center items-center min-h-screen">
+    <div class="container bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-2xl font-semibold text-green-500 mb-4">Pencil Eraser Sharpener</h1>
+        <p class="text-gray-700 mb-4">Enter the eraser's condition to sharpen it!</p>
+        <input type="text" id="eraserCondition" placeholder="e.g., blunt, slightly used" class="border p-2 rounded w-full mb-4">
+        <button id="sharpenButton" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sharpen Eraser</button>
+        <div id="result" class="mt-6 text-lg font-semibold"></div>
+    </div>
+
+    <script>
+        function sharpenEraser(eraserCondition) {
+            /**
+             * Simulates sharpening an eraser.
+             *
+             * @param {string} eraserCondition - A string describing the eraser's condition
+             * (e.g., "blunt", "slightly used", "worn down").
+             * @returns {string} A string describing the sharpened eraser's condition,
+             * or an error message if the input is invalid.
+             */
+
+            // List of valid eraser conditions (case-insensitive)
+            const validConditions = ["blunt", "slightly used", "worn down", "almost gone"];
+
+            // Check if the provided eraser condition is valid
+            if (!validConditions.includes(eraserCondition.toLowerCase())) {
+                return "Invalid eraser condition. Please use: " + validConditions.join(", ");
+            }
+
+            // List of possible "sharpened" conditions
+            const sharpnessLevels = ["perfect point", "sharp", "slightly pointed", "less blunt", "renewed"];
+
+            // Special case: if the eraser is almost gone, it can't be sharpened
+            if (eraserCondition.toLowerCase() === "almost gone") {
+                return "This eraser is too far gone to sharpen!";
+            }
+
+            // Randomly select a "sharpened" condition
+            const sharpenedCondition = sharpnessLevels[Math.floor(Math.random() * sharpnessLevels.length)];
+
+            // Return the result
+            return `Your eraser is now: ${sharpenedCondition}!`;
+        }
+
+        document.getElementById("sharpenButton").addEventListener("click", function() {
+            const eraserCondition = document.getElementById("eraserCondition").value;
+            const result = sharpenEraser(eraserCondition);
+            document.getElementById("result").textContent = result;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
